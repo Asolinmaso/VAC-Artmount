@@ -1,0 +1,125 @@
+.footerSection {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #6B156E 0%, #2E052F 100%);
+  color: var(--bg-white);
+  padding: 100px 100px 50px 100px;
+  overflow: hidden;
+}
+
+.footerContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.columnLogo {
+  flex: 0 0 311px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logoSubtext {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.socialSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.socialLabel {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  background-color: var(--bg-white);
+  border-radius: 50%;
+}
+
+.columnLinks {
+  flex: 0 0 157px;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.linkList a {
+  font-size: 20px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.linkList a:hover {
+  opacity: 1;
+}
+
+.columnAddress {
+  flex: 0 0 396px;
+  display: flex;
+  flex-direction: column;
+}
+
+.addressText {
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.largeTextBg {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 200px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
