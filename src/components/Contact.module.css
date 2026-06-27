@@ -1,12 +1,14 @@
+/* ─── Contact Section ────────────────────────────────────────── */
 .contactSection {
   max-width: 1440px;
   margin: 0 auto;
   padding: 100px;
   display: flex;
-  gap: 100px;
+  gap: 80px;
   align-items: flex-start;
 }
 
+/* ─── Contact Info ───────────────────────────────────────────── */
 .contactInfo {
   flex: 1;
   display: flex;
@@ -15,30 +17,31 @@
 
 .title {
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-dark);
   line-height: 1.25;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
 .description {
-  font-size: 24px;
-  color: var(--text-dark);
-  line-height: 1.2;
-  margin-bottom: 60px;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.65;
+  margin: 0 0 48px;
 }
 
 .subTitle {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 32px;
+  margin: 0 0 28px;
 }
 
+/* ─── Info List ──────────────────────────────────────────────── */
 .infoList {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .infoItem {
@@ -48,87 +51,156 @@
 }
 
 .iconBox {
-  width: 32px;
-  height: 32px;
-  background-color: var(--primary-purple);
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out-back),
+              box-shadow var(--duration-fast) ease;
+}
+
+.iconEmail  { background: linear-gradient(135deg, #6B156E, #9B20A0); }
+.iconPhone  { background: linear-gradient(135deg, #2FA7DF, #1886BF); }
+.iconLocation { background: linear-gradient(135deg, #6B156E, #2FA7DF); }
+
+.infoItem:hover .iconBox {
+  transform: scale(1.12) rotate(-4deg);
+  box-shadow: 0 8px 20px rgba(107, 21, 110, 0.3);
 }
 
 .infoText {
-  font-size: 24px;
+  font-size: 18px;
   color: var(--text-dark);
+  transition: color var(--duration-fast) ease;
+  font-weight: 500;
 }
 
+.infoItem:hover .infoText {
+  color: var(--primary-purple);
+}
+
+/* ─── Form Card ──────────────────────────────────────────────── */
 .contactFormWrapper {
-  flex: 0 0 618px;
+  flex: 0 0 580px;
 }
 
 .formCard {
   background: var(--bg-white);
-  border: 1px solid var(--text-gray);
-  box-shadow: 0px 0px 24px rgba(123, 0, 224, 0.25);
-  border-radius: 16px;
-  padding: 32px;
+  border: 1px solid rgba(123, 0, 224, 0.12);
+  box-shadow: 0 8px 40px rgba(123, 0, 224, 0.12),
+              0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: box-shadow var(--duration-normal) ease;
+}
+
+.formCard:focus-within {
+  box-shadow: 0 12px 60px rgba(123, 0, 224, 0.18),
+              0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .formTitle {
-  font-size: 40px;
-  font-weight: 600;
-  color: var(--primary-purple);
-  margin-bottom: 32px;
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 32px;
 }
 
+/* ─── Form ───────────────────────────────────────────────────── */
 .form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   align-items: center;
 }
 
 .inputGroup {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-gray);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .input {
   width: 100%;
-  height: 48px;
-  border: 1px solid var(--text-gray);
-  border-radius: 8px;
+  height: 52px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
   padding: 0 16px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: inherit;
+  color: var(--text-dark);
+  background: var(--bg-white);
+  outline: none;
+  transition: border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
+}
+
+.input:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(107, 21, 110, 0.1);
+  transform: translateY(-1px);
 }
 
 .input::placeholder {
   color: var(--text-gray);
 }
 
+/* ─── Phone Input ────────────────────────────────────────────── */
 .inputGroupPhone {
   width: 100%;
-  height: 48px;
-  border: 1px solid var(--text-gray);
-  border-radius: 8px;
+  height: 52px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  transition: border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.inputGroupPhone:focus-within {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(107, 21, 110, 0.1);
 }
 
 .countryCode {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 16px;
-  border-right: 1px solid var(--text-gray);
+  gap: 6px;
+  padding: 0 14px;
+  border-right: 1.5px solid var(--border-color);
   color: var(--text-gray);
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  height: 100%;
+  flex-shrink: 0;
+  background: var(--bg-light);
+  user-select: none;
 }
 
 .arrowDown {
-  font-size: 12px;
+  font-size: 10px;
+  opacity: 0.6;
 }
 
 .inputPhone {
@@ -136,38 +208,164 @@
   height: 100%;
   border: none;
   padding: 0 16px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: inherit;
   outline: none;
+  color: var(--text-dark);
+  background: transparent;
 }
 
 .inputPhone::placeholder {
   color: var(--text-gray);
 }
 
+/* ─── Textarea ───────────────────────────────────────────────── */
 .textarea {
   width: 100%;
-  height: 110px;
-  border: 1px solid var(--text-gray);
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 18px;
+  height: 120px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
   font-family: inherit;
   resize: none;
+  outline: none;
+  color: var(--text-dark);
+  background: var(--bg-white);
+  transition: border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.textarea:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(107, 21, 110, 0.1);
 }
 
 .textarea::placeholder {
   color: var(--text-gray);
 }
 
+/* ─── Submit Button ──────────────────────────────────────────── */
 .submitBtn {
-  background: var(--primary-purple);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--primary-purple), #9B20A0);
   color: var(--bg-white);
-  padding: 12px 24px;
+  padding: 14px 36px;
   border-radius: 12px;
-  font-weight: 600;
-  font-size: 20px;
-  width: 173px;
-  height: 48px;
-  margin-top: 16px;
+  font-weight: 700;
+  font-size: 17px;
+  width: auto;
+  min-width: 180px;
+  justify-content: center;
+  margin-top: 8px;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--duration-fast) var(--ease-out-back),
+              box-shadow var(--duration-fast) ease,
+              background var(--duration-fast) ease;
+  will-change: transform;
+}
+
+.submitBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(107, 21, 110, 0.45);
+  background: linear-gradient(135deg, var(--primary-purple-medium), var(--primary-blue));
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .contactSection {
+    padding: 80px 48px;
+    gap: 60px;
+  }
+
+  .contactFormWrapper {
+    flex: 0 0 480px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contactSection {
+    flex-direction: column;
+    gap: 60px;
+    padding: 60px 32px;
+  }
+
+  .contactFormWrapper {
+    flex: none;
+    width: 100%;
+  }
+
+  .contactInfo {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 60px 20px;
+    gap: 48px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 36px;
+  }
+
+  .subTitle {
+    font-size: 22px;
+  }
+
+  .infoText {
+    font-size: 15px;
+  }
+
+  .formCard {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .formTitle {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .input,
+  .inputGroupPhone {
+    height: 52px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 48px 16px;
+    /* safe area padding at bottom */
+    padding-bottom: max(48px, env(safe-area-inset-bottom, 48px));
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .formCard {
+    padding: 24px 16px;
+  }
 }

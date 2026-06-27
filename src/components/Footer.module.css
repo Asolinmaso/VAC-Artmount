@@ -1,12 +1,14 @@
+/* ─── Footer Section ─────────────────────────────────────────── */
 .footerSection {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, #6B156E 0%, #2E052F 100%);
+  background: linear-gradient(160deg, #6B156E 0%, #2E052F 100%);
   color: var(--bg-white);
-  padding: 100px 100px 50px 100px;
+  padding: 80px 100px 60px;
   overflow: hidden;
 }
 
+/* ─── Footer Content ─────────────────────────────────────────── */
 .footerContent {
   position: relative;
   z-index: 10;
@@ -17,8 +19,9 @@
   margin: 0 auto;
 }
 
+/* ─── Logo Column ────────────────────────────────────────────── */
 .columnLogo {
-  flex: 0 0 311px;
+  flex: 0 0 320px;
   display: flex;
   flex-direction: column;
 }
@@ -26,35 +29,43 @@
 .logo {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .logoText {
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.5px;
 }
 
 .logoSubtext {
-  font-size: 14px;
-  letter-spacing: 2px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-top: 2px;
 }
 
 .description {
   font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  opacity: 0.8;
+  line-height: 1.7;
+  margin: 0 0 28px;
+  opacity: 0.75;
+  max-width: 280px;
 }
 
+/* ─── Social ─────────────────────────────────────────────────── */
 .socialSection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .socialLabel {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
 }
 
 .socialIcons {
@@ -63,63 +74,204 @@
 }
 
 .socialIcon {
-  width: 32px;
-  height: 32px;
-  background-color: var(--bg-white);
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease,
+              transform var(--duration-fast) var(--ease-out-back),
+              border-color var(--duration-fast) ease;
 }
 
+.socialIcon:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px) scale(1.1);
+  border-color: transparent;
+}
+
+/* ─── Links Column ───────────────────────────────────────────── */
 .columnLinks {
-  flex: 0 0 157px;
+  flex: 0 0 180px;
   display: flex;
   flex-direction: column;
 }
 
 .columnTitle {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 28px;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.columnTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
 }
 
 .linkList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .linkList a {
-  font-size: 20px;
-  opacity: 0.8;
-  transition: opacity 0.3s;
+  font-size: 16px;
+  opacity: 0.75;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: opacity var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
+}
+
+.linkList a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1px;
+  transition: width var(--duration-normal) var(--ease-out-expo);
 }
 
 .linkList a:hover {
   opacity: 1;
+  transform: translateX(4px);
 }
 
+.linkList a:hover::after {
+  width: 100%;
+}
+
+/* ─── Address Column ─────────────────────────────────────────── */
 .columnAddress {
-  flex: 0 0 396px;
+  flex: 0 0 340px;
   display: flex;
   flex-direction: column;
 }
 
 .addressText {
-  font-size: 20px;
-  line-height: 1.4;
-  margin-bottom: 16px;
-  opacity: 0.8;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  opacity: 0.75;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease;
 }
 
+.addressText:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Large Background Text ──────────────────────────────────── */
 .largeTextBg {
   position: absolute;
-  bottom: -40px;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 200px;
   font-weight: 900;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
   white-space: nowrap;
   pointer-events: none;
   z-index: 1;
+  animation: driftY 12s ease-in-out infinite;
+  letter-spacing: -8px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .footerSection {
+    padding: 60px 48px 50px;
+  }
+
+  .columnLogo {
+    flex: 0 0 260px;
+  }
+
+  .columnAddress {
+    flex: 0 0 280px;
+  }
+
+  .largeTextBg {
+    font-size: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerSection {
+    padding: 60px 24px 80px;
+    /* extra bottom for large BG text */
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .columnLogo,
+  .columnLinks,
+  .columnAddress {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .largeTextBg {
+    font-size: 80px;
+    bottom: -20px;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+    letter-spacing: -4px;
+  }
+
+  .columnTitle {
+    font-size: 18px;
+  }
+
+  .columnTitle::after {
+    width: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerSection {
+    padding: 48px 16px 72px;
+    padding-bottom: max(72px, env(safe-area-inset-bottom, 72px));
+  }
+
+  .socialIcons {
+    gap: 10px;
+  }
+
+  .socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .largeTextBg {
+    font-size: 60px;
+    letter-spacing: -3px;
+  }
 }

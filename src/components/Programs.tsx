@@ -1,9 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import styles from './Programs.module.css';
+import { useScrollAnimation } from './useScrollAnimation';
 
 const Programs = () => {
+  useScrollAnimation();
   const [activeProgram, setActiveProgram] = useState('CS_IT');
+  const [detailKey, setDetailKey] = useState(0);
 
   const programsData = {
     CS_IT: {
@@ -30,7 +33,7 @@ const Programs = () => {
     },
     MGMT: {
       name: 'Management & Commerce',
-      desc: 'Develop business, leadership, and communication skills through industry-focused programs designed for today\'s dynamic professional landscape.',
+      desc: "Develop business, leadership, and communication skills through industry-focused programs designed for today's dynamic professional landscape.",
       courses: [
         'Business Communication',
         'Business Development (Sales & Marketing)',
@@ -88,11 +91,17 @@ const Programs = () => {
     { id: 'SUSTAIN', name: 'Sustainability & Green Technologies' },
   ];
 
+  const handleProgramChange = (id: string) => {
+    if (id === activeProgram) return;
+    setActiveProgram(id);
+    setDetailKey((k) => k + 1);
+  };
+
   const activeData = programsData[activeProgram as keyof typeof programsData];
 
   return (
     <section className={styles.programsSection}>
-      <div className={styles.programsHeader}>
+      <div className={`${styles.programsHeader} reveal`}>
         <div className={styles.headerLeft}>
           <span className={styles.label}>Our Programs</span>
           <h2 className={styles.title}>Explore Programs Across<br/>Diverse Disciplines</h2>
@@ -104,23 +113,38 @@ const Programs = () => {
         </div>
       </div>
 
+      {/* Mobile: horizontal pill tabs */}
+      <div className={styles.mobilePillTabs}>
+        {programs.map((prog) => (
+          <button
+            key={prog.id}
+            className={`${styles.pillTab} ${activeProgram === prog.id ? styles.pillTabActive : ''}`}
+            onClick={() => handleProgramChange(prog.id)}
+          >
+            {prog.name}
+          </button>
+        ))}
+      </div>
+
       <div className={styles.programsContent}>
+        {/* Desktop: vertical list */}
         <div className={styles.programList}>
           {programs.map((prog) => (
-            <div 
+            <button
               key={prog.id}
               className={`${styles.programItem} ${activeProgram === prog.id ? styles.active : ''}`}
-              onClick={() => setActiveProgram(prog.id)}
+              onClick={() => handleProgramChange(prog.id)}
             >
               <div className={styles.programIcon}></div>
               <span className={styles.programName}>{prog.name}</span>
-            </div>
+              <span className={styles.programArrow}>›</span>
+            </button>
           ))}
         </div>
 
         <div className={styles.programDetails}>
           {activeData && (
-            <div className={styles.detailsPane}>
+            <div className={styles.detailsPane} key={detailKey}>
               <div className={styles.detailsHeader}>
                 <div className={styles.detailsIcon}></div>
                 <h3 className={styles.detailsTitle}>{activeData.name}</h3>
@@ -128,10 +152,14 @@ const Programs = () => {
               <p className={styles.detailsDesc}>
                 {activeData.desc}
               </p>
-              
+
               <ul className={styles.courseList}>
                 {activeData.courses.map((course, index) => (
-                  <li key={index} className={styles.courseItem}>
+                  <li
+                    key={index}
+                    className={styles.courseItem}
+                    style={{ animationDelay: `${0.08 * index}s` }}
+                  >
                     <div className={styles.courseLeft}>
                       <span className={styles.bullet}></span>
                       <span className={styles.courseName}>{course}</span>
@@ -149,4 +177,3 @@ const Programs = () => {
 };
 
 export default Programs;
-

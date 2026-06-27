@@ -1,3 +1,4 @@
+/* ─── Why Choose Us ──────────────────────────────────────────── */
 .whySection {
   max-width: 1440px;
   margin: 0 auto;
@@ -9,63 +10,225 @@
 }
 
 .label {
-  font-size: 24px;
-  color: var(--text-dark);
-  margin-bottom: 12px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+  display: block;
 }
 
 .title {
   font-size: 48px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 24px;
+  margin: 0 0 24px;
+  line-height: 1.2;
 }
 
 .description {
-  font-size: 24px;
-  color: var(--text-dark);
-  max-width: 1000px;
-  line-height: 1.4;
-  margin-bottom: 60px;
+  font-size: 20px;
+  color: #555;
+  max-width: 800px;
+  line-height: 1.65;
+  margin: 0 0 72px;
 }
 
+/* ─── Features Container ─────────────────────────────────────── */
 .featuresContainer {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   width: 100%;
-  gap: 40px;
+  gap: 0;
 }
 
+/* ─── Individual Feature Card ────────────────────────────────── */
 .featureItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  max-width: 260px;
+  max-width: 280px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  transition: transform var(--duration-normal) var(--ease-out-back),
+              box-shadow var(--duration-normal) ease,
+              background-color var(--duration-normal) ease;
+  cursor: default;
 }
 
-.featureTitle {
-  font-size: 24px;
-  font-weight: 600;
+.featureItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(107, 21, 110, 0.12);
+  background-color: var(--bg-light);
+}
+
+/* ─── Icon ───────────────────────────────────────────────────── */
+.featureIconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(107, 21, 110, 0.08), rgba(47, 167, 223, 0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 24px;
-  background: linear-gradient(90deg, #6B156E 0%, #2FA7DF 100%);
+  transition: transform var(--duration-fast) var(--ease-out-back),
+              background var(--duration-normal) ease;
+}
+
+.featureItem:hover .featureIconWrapper {
+  transform: scale(1.12) rotate(-4deg);
+  background: linear-gradient(135deg, rgba(107, 21, 110, 0.15), rgba(47, 167, 223, 0.2));
+}
+
+.featureIcon {
+  font-size: 28px;
+  display: block;
+}
+
+/* ─── Title (gradient + shimmer) ────────────────────────────── */
+.featureTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #6B156E 0%, #2FA7DF 50%, #6B156E 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   text-align: center;
+  transition: background-position 0.6s ease;
+}
+
+.featureItem:hover .featureTitle {
+  background-position: right center;
 }
 
 .featureDesc {
-  font-size: 24px;
-  color: var(--text-dark);
+  font-size: 18px;
+  color: #555;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.5;
+  margin: 0;
 }
 
+/* ─── Divider ────────────────────────────────────────────────── */
 .divider {
   width: 1px;
-  height: 140px;
-  background-color: var(--border-color);
+  align-self: stretch;
+  background: linear-gradient(180deg, transparent 0%, var(--border-color) 20%, var(--border-color) 80%, transparent 100%);
+  flex-shrink: 0;
+  margin: 16px 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .whySection {
+    padding: 80px 48px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .featureItem {
+    max-width: 240px;
+    padding: 24px 16px;
+  }
+
+  .featureTitle {
+    font-size: 19px;
+  }
+
+  .featureDesc {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whySection {
+    padding: 60px 24px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+
+  /* 2-column grid */
+  .featuresContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  /* Hide vertical dividers in grid mode */
+  .divider {
+    display: none;
+  }
+
+  .featureItem {
+    max-width: 100%;
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  /* Add subtle separators via grid borders */
+  .featureItem:nth-child(1),
+  .featureItem:nth-child(3) {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .featureItem:nth-child(1),
+  .featureItem:nth-child(2) {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .featureTitle {
+    font-size: 17px;
+  }
+
+  .featureDesc {
+    font-size: 14px;
+  }
+
+  .featureIconWrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .featureIcon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 26px;
+  }
+
+  .featuresContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .featureItem:nth-child(1),
+  .featureItem:nth-child(3) {
+    border-right: none;
+  }
+
+  .featureItem:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+    border-right: none;
+  }
 }
