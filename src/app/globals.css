@@ -181,3 +181,11 @@ button {
   }
   html { scroll-behavior: auto; }
 }
+#about,
+#courses,
+#benefits {
+  scroll-margin-top: 120px;
+}
+#contact {
+  scroll-margin-top: 120px;
+}

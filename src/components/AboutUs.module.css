@@ -1,194 +1,191 @@
-/* ─── About Section ──────────────────────────────────────────── */
-.aboutSection {
-  width: 100%;
-  max-width: 1100px;
-  margin: 100px auto;
+.aboutWrapper {
+  max-width: 1200px;
+  margin: 60px auto;
   padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* ─── Tabs ───────────────────────────────────────────────────── */
+.topSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.leftImage {
+  width: 42%;
+  flex-shrink: 0;
+}
+
+.leftImage img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+
+.rightContent {
+  width: 58%;
+}
+
+.aboutLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #161616;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.heading {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.08;
+  color: #161616;
+  margin: 0;
+}
+
+.heading span {
+  color: #6d2b8d;
+}
+
+.description {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333;
+}
+
+/* ---------------- TABS ---------------- */
+
 .tabsContainer {
   display: flex;
   width: 100%;
   border-radius: 16px 16px 0 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  z-index: 5;
 }
 
 .tab {
   flex: 1;
-  text-align: center;
-  padding: 20px 16px;
-  font-size: 28px;
-  font-weight: 600;
-  color: #FFFFFF;
-  cursor: pointer;
-  position: relative;
+  height: 58px;
   border: none;
-  font-family: inherit;
-  transition: background-color var(--duration-normal) ease,
-              transform var(--duration-fast) ease,
-              filter var(--duration-fast) ease;
-  will-change: transform, filter;
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  position: relative;
+  transition: 0.3s;
 }
 
-.tab:hover {
-  filter: brightness(1.1);
+.visionTab {
+  background: #36a8df;
 }
 
-.tab:active {
-  transform: scaleY(0.97);
+.missionTab {
+  background: #8c2a92;
 }
 
-.activeTab {
-  background-color: #862789;
+.goalsTab {
+  background: #36a8df;
 }
 
-.inactiveTab {
-  background-color: #2FA7DF;
-}
-
-.inactiveTab:hover {
-  background-color: #2791C3;
-}
-
-/* Animated triangle indicator */
 .tabIndicator {
   position: absolute;
-  bottom: -20px;
   left: 50%;
+  bottom: -14px;
   transform: translateX(-50%);
+
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #862789;
+
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+
   z-index: 10;
-  animation: scaleIn 0.25s var(--ease-out-back) both;
 }
 
-/* ─── Content Container ──────────────────────────────────────── */
+/* ---------------- CARD ---------------- */
+
 .contentContainer {
   display: flex;
-  background-color: #FFFFFF;
+  align-items: center;
+  gap: 16px;
+
+  background: #fff;
+  border: 1px solid #e7e7e7;
   border-radius: 0 0 16px 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  padding: 40px;
-  gap: 40px;
-  width: 100%;
-  border: 1px solid #EAEAEA;
-  border-top: none;
+
+  padding: 16px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ─── Image ──────────────────────────────────────────────────── */
-.imageWrapper {
-  flex: 0 0 42%;
-  overflow: hidden;
-  border-radius: 12px;
+.tabImage {
+  width: 160px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
-.placeholderImage {
-  width: 100%;
-  height: 260px;
-  background-color: #E0E0E0;
-  border-radius: 12px;
-  background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-  background-size: cover;
-  background-position: center;
-  transition: transform var(--duration-slow) ease;
-}
-
-.imageWrapper:hover .placeholderImage {
-  transform: scale(1.04);
-}
-
-/* ─── Text Content (animated on key change) ──────────────────── */
 .textContent {
   flex: 1;
-  display: flex;
-  align-items: center;
-  animation: fadeInRight 0.4s var(--ease-out-expo) both;
 }
 
 .textContent p {
-  font-size: 26px;
-  font-weight: 400;
-  color: #161616;
+  font-size: 14px;
   line-height: 1.5;
+  color: #222;
   margin: 0;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────── */
+/* ---------------- RESPONSIVE ---------------- */
 
 @media (max-width: 1024px) {
-  .aboutSection {
-    max-width: 860px;
-    margin: 80px auto;
+  .topSection {
+    flex-direction: column;
   }
 
-  .tab {
-    font-size: 22px;
-    padding: 18px 12px;
+  .leftImage,
+  .rightContent {
+    width: 100%;
   }
 
-  .textContent p {
-    font-size: 22px;
+  .leftImage img {
+    height: auto;
+  }
+
+  .heading {
+    font-size: 42px;
   }
 }
 
 @media (max-width: 768px) {
-  .aboutSection {
-    margin: 60px auto;
-    padding: 0 16px;
+  .contentContainer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .tabsContainer {
-    border-radius: 12px 12px 0 0;
+  .tabImage {
+    width: 100%;
+    height: 220px;
+  }
+
+  .heading {
+    font-size: 34px;
+  }
+
+  .description {
+    font-size: 15px;
   }
 
   .tab {
     font-size: 16px;
-    padding: 16px 8px;
-  }
-
-  .contentContainer {
-    flex-direction: column;
-    padding: 24px 20px;
-    gap: 24px;
-  }
-
-  .imageWrapper {
-    flex: none;
-    width: 100%;
-  }
-
-  .placeholderImage {
-    height: 200px;
-  }
-
-  .textContent {
-    animation: fadeInUp 0.4s var(--ease-out-expo) both;
   }
 
   .textContent p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .tabIndicator {
-    border-left-width: 14px;
-    border-right-width: 14px;
-    border-top-width: 14px;
-    bottom: -14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .tab {
-    font-size: 14px;
-    padding: 14px 4px;
+    font-size: 15px;
   }
 }

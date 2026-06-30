@@ -12,47 +12,72 @@
 }
 
 /* ─── Background decorations ─────────────────────────────────── */
+
 .parallaxWrapperRight {
   position: absolute;
-  width: 321px;
-  height: 321px;
-  left: calc(50% + 421px);
-  top: 142px;
+  width: 180px;
+  height: 320px;
+  right: 120px;
+  top: 120px;
   z-index: 1;
+  pointer-events: none;
   will-change: transform;
   pointer-events: none;
 }
 
 .parallaxWrapperLeft {
   position: absolute;
-  width: 310px;
-  height: 310px;
-  left: calc(50% - 865px);
-  top: 298px;
+  width: 180px;
+  height: 320px;
+  left: 40px;
+  bottom: 80px;
   z-index: 1;
+  pointer-events: none;
   will-change: transform;
   pointer-events: none;
 }
+
+
+/* .bgEllipseRight {
+  width: 100%;
+  height: 100%;
+  background: #8E0FA5;
+  filter: blur(180px);
+  border-radius: 50%;
+  animation: orbitRight 15s ease-in-out infinite alternate;
+  will-change: transform;
+} */
 
 .bgEllipseRight {
   width: 100%;
   height: 100%;
   background: #AC0DB2;
-  filter: blur(100px);
+  filter: blur(80px);
   border-radius: 50%;
   animation: orbitRight 15s ease-in-out infinite alternate;
   will-change: transform;
 }
 
+
+/* .bgEllipseLeft {
+  width: 100%;
+  height: 100%;
+  background: #0FA7E8;
+  filter: blur(180px);
+  border-radius: 50%;
+  animation: orbitLeft 18s ease-in-out infinite alternate 1.5s;
+  will-change: transform;
+} */
 .bgEllipseLeft {
   width: 100%;
   height: 100%;
   background: #116D98;
-  filter: blur(100px);
+  filter: blur(80px);
   border-radius: 50%;
   animation: orbitLeft 18s ease-in-out infinite alternate 1.5s;
   will-change: transform;
 }
+
 
 @keyframes orbitRight {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.8; }
@@ -68,7 +93,7 @@
   100% { transform: translate(0, 0) scale(1) rotate(-360deg); opacity: 0.9; }
 }
 
-.bgStripes {
+/* .bgStripes {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -81,6 +106,29 @@
     transparent 60px,
     transparent 120px
   );
+   background: repeating-linear-gradient( 
+  90deg,
+  rgba(255, 255, 255, 0.01) 0px,
+  rgba(255, 255, 255, 0.01) 55px,
+  transparent 55px,
+  transparent 110px 
+ );
+  z-index: 2;
+  pointer-events: none;
+} */
+
+.bgStripes {
+  position: absolute;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 50px,
+    transparent 50px,
+    transparent 100px
+  );
+
   z-index: 2;
   pointer-events: none;
 }
@@ -99,6 +147,8 @@
   align-items: center;
   padding: 24px 100px;
   z-index: 100;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
   animation: fadeInDown 0.7s var(--ease-out-expo) both;
   transition: padding var(--duration-normal) ease, 
               background-color var(--duration-normal) ease, 
@@ -110,17 +160,20 @@
               border var(--duration-normal) ease;
 }
 
-.headerScrolled {
+
+
+/* .headerScrolled {
   padding: 16px 40px;
   background: rgba(10, 0, 10, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-  top: 20px;
-  border-radius: 100px;
-  max-width: 1200px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
+
+  top: 0;
+  border-radius: 0;
+  max-width: 1440px;
+  border: none;
+} */
 
 /* ─── Logo ───────────────────────────────────────────────────── */
 .logo {
@@ -176,19 +229,15 @@
 }
 
 /* ─── Header Contact Button ──────────────────────────────────── */
+
 .contactBtn {
-  background: var(--primary-purple);
+  background: #7E1486;
   color: #FFFFFF;
-  padding: 10px 24px;
-  border-radius: 100px;
+  padding: 14px 36px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 1.4;
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration-fast) var(--ease-out-back),
-              box-shadow var(--duration-fast) ease,
-              background-color var(--duration-fast) ease;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .contactBtn::before {
@@ -315,7 +364,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 160px;
+  margin-top: 130px;
   z-index: 10;
   max-width: 900px;
   padding: 0 24px;
@@ -331,7 +380,7 @@
 }
 
 .title {
-  font-size: 64px;
+  font-size: 56px;
   font-weight: 600;
   line-height: 1.15;
   margin: 0 0 28px;
@@ -359,8 +408,8 @@
 .exploreBtn, .contactUsBtn {
   background: var(--primary-purple);
   color: #FFFFFF;
-  padding: 14px 28px;
-  border-radius: 12px;
+  padding: 12px 24px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 18px;
   border: none;
@@ -381,7 +430,7 @@
 }
 
 /* ─── Stats Container ────────────────────────────────────────── */
-.statsContainer {
+/* .statsContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -390,7 +439,7 @@
   backdrop-filter: blur(12px);
   width: 100%;
   max-width: 1173px;
-  margin-top: 80px;
+  margin-top: 800px;
   padding: 40px;
   border-radius: 24px 24px 0 0;
   box-shadow: 0px 0px 100px 1px rgba(47, 167, 223, 0.4);
@@ -398,13 +447,42 @@
   animation: fadeInUp 0.9s var(--ease-out-expo) 0.85s both;
   border: 1px solid rgba(47, 167, 223, 0.15);
   border-bottom: none;
+} */
+
+
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  max-width: 900px;
+  margin-top: 110px;
+  padding: 32px 20px;
+  border-radius: 24px 24px 0 0;
+  box-shadow:0 0 120px rgba(47,167,223,0.35);
+  z-index: 10;
+  animation: fadeInUp 0.9s var(--ease-out-expo) 0.85s both;
+  border: 1px solid rgba(47, 167, 223, 0.15);
+  border-bottom: none;
 }
+
+/* .statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: transform var(--duration-fast) var(--ease-out-back);
+} */
 
 .statItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
   transition: transform var(--duration-fast) var(--ease-out-back);
 }
 
@@ -419,20 +497,38 @@
   flex-shrink: 0;
 }
 
+/* .statNumber {
+  font-size: 44px;
+  font-weight: 700;
+  color: #2FA7DF;
+  line-height: 1;
+  margin: 0;
+} */
+
 .statNumber {
   font-size: 44px;
   font-weight: 700;
   color: #2FA7DF;
   line-height: 1;
   margin: 0;
+  margin-bottom: 0;
 }
 
-.statText {
+/* .statText {
   font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
   text-align: center;
+} */
+
+.statText {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  text-align: center;
+  margin-top: 0;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
@@ -475,12 +571,12 @@
     padding: 20px 24px;
   }
 
-  .headerScrolled {
+  /* .headerScrolled {
     padding: 12px 24px;
     border-radius: 20px;
     top: 10px;
     max-width: calc(100% - 20px);
-  }
+  } */
 
   /* Hide desktop nav and contact button */
   .nav,
@@ -498,19 +594,19 @@
     display: flex;
   }
 
-  .bgEllipseRight {
-    width: 200px;
-    height: 200px;
-    left: calc(50% + 80px);
-    top: 60px;
-  }
+.bgEllipseRight {
+  width: 340px;
+  height: 340px;
+  left: calc(50% + 120px);
+  top: 40px;
+}
 
-  .bgEllipseLeft {
-    width: 180px;
-    height: 180px;
-    left: calc(50% - 260px);
-    top: 200px;
-  }
+.bgEllipseLeft {
+  width: 320px;
+  height: 320px;
+  left: calc(50% - 320px);
+  top: 180px;
+}
 
   .heroContent {
     margin-top: 60px;
@@ -593,5 +689,34 @@
 
   .statNumber {
     font-size: 24px;
+  }
+}
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  padding: 4px 0;
+  margin-top: 18px;
+  position: relative;
+  z-index: 10;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  color: white;
+  font-size: 20px;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }

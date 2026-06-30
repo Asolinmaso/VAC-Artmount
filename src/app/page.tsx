@@ -8,15 +8,30 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
+
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Hero />
-      <AboutUs />
-      <Programs />
-      <WhyChooseUs />
+      <section id="home">
+        <Hero />
+      </section>
+
+      <section id="about">
+        <AboutUs />
+      </section>
+
+      <section id="courses">
+        <Programs />
+      </section>
+
+      <section id="benefits">
+        <WhyChooseUs />
+      </section>
+
       <Banner />
-      <Contact />
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
     </main>
   );
