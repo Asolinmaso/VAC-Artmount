@@ -1,17 +1,62 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
 
 const Hero = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const circleLeftRef = useRef<HTMLDivElement>(null);
+  const circleRightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current || !circleLeftRef.current || !circleRightRef.current) return;
+      
+      const { clientX, clientY } = e;
+      const xPos = (clientX / window.innerWidth - 0.5) * 60; 
+      const yPos = (clientY / window.innerHeight - 0.5) * 60;
+      
+      requestAnimationFrame(() => {
+        if (circleLeftRef.current) {
+          circleLeftRef.current.style.transform = `translate(${xPos * 1.5}px, ${yPos * 1.5}px)`;
+        }
+        if (circleRightRef.current) {
+          circleRightRef.current.style.transform = `translate(${xPos * -2}px, ${yPos * -2}px)`;
+        }
+      });
+    };
+
+    const hero = heroRef.current;
+    if (hero) {
+      hero.addEventListener('mousemove', handleMouseMove);
+    }
+    return () => {
+      if (hero) {
+        hero.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
+  }, []);
 
   return (
-    <section className={styles.heroSection}>
-      <div className={styles.bgEllipseLeft}></div>
-      <div className={styles.bgEllipseRight}></div>
+    <section ref={heroRef} className={styles.heroSection}>
+      <div ref={circleLeftRef} className={styles.parallaxWrapperLeft}>
+        <div className={styles.bgEllipseLeft}></div>
+      </div>
+      <div ref={circleRightRef} className={styles.parallaxWrapperRight}>
+        <div className={styles.bgEllipseRight}></div>
+      </div>
       <div className={styles.bgStripes}></div>
 
-      <header className={styles.header}>
+      <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
         <div className={styles.logo}>
           <span className={styles.logoText}><span className={styles.logoA}>a</span>rtmount</span>
           <span className={styles.logoSubtext}>academy</span>
