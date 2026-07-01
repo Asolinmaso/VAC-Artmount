@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import styles from './Programs.module.css';
 import { useScrollAnimation } from './useScrollAnimation';
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 const Programs = () => {
   useScrollAnimation();
@@ -82,14 +84,14 @@ const Programs = () => {
   };
 
   const programs = [
-    { id: 'CS_IT', name: 'Computer Science & IT' },
-    { id: 'DESIGN', name: 'Design & Creative Media' },
-    { id: 'MGMT', name: 'Management & Commerce' },
-    { id: 'HEALTH', name: 'Healthcare & Life Sciences' },
-    { id: 'ELEC', name: 'Electrical, Electronics & Emerging Technologies' },
-    { id: 'MECH', name: 'Mechanical & Manufacturing Engineering' },
-    { id: 'SUSTAIN', name: 'Sustainability & Green Technologies' },
-  ];
+  { id: 'CS_IT', name: 'Computer Science & IT', icon: '/computer.png' },
+  { id: 'DESIGN', name: 'Design & Creative Media', icon: '/design.png' },
+  { id: 'MGMT', name: 'Management & Commerce', icon: '/management.png' },
+  { id: 'HEALTH', name: 'Healthcare & Life Sciences', icon: '/health.png' },
+  { id: 'ELEC', name: 'Electrical, Electronics & Emerging Technologies', icon: '/electrical.png' },
+  { id: 'MECH', name: 'Mechanical & Manufacturing Engineering', icon: '/mechanical.png' },
+  { id: 'SUSTAIN', name: 'Sustainability & Green Technologies', icon: '/sustainability.png' },
+];
 
   const handleProgramChange = (id: string) => {
     if (id === activeProgram) return;
@@ -100,12 +102,11 @@ const Programs = () => {
   const activeData = programsData[activeProgram as keyof typeof programsData];
 
   return (
-    <section className={styles.programsSection}>
-      <div className={`${styles.programsHeader} reveal`}>
+      <section id="programs" className={styles.programsSection}> 
+        <div className={`${styles.programsHeader} reveal`}>
         <div className={styles.headerLeft}>
           <span className={styles.label}>Our Programs</span>
-          <h2 className={styles.title}>Explore Programs Across<br/>Diverse Disciplines</h2>
-        </div>
+          <h2 className={styles.title}>Explore Programs Across<br /><span>Diverse Disciplines</span></h2>        </div>
         <div className={styles.headerRight}>
           <p className={styles.description}>
             Industry-aligned programs designed to build practical skills and prepare students for future-ready careers.
@@ -135,7 +136,14 @@ const Programs = () => {
               className={`${styles.programItem} ${activeProgram === prog.id ? styles.active : ''}`}
               onClick={() => handleProgramChange(prog.id)}
             >
-              <div className={styles.programIcon}></div>
+              <div className={styles.programIcon}>
+                <Image
+                  src={prog.icon}
+                  alt={prog.name}
+                  width={32}
+                  height={32}
+                />
+              </div>
               <span className={styles.programName}>{prog.name}</span>
               <span className={styles.programArrow}>›</span>
             </button>
@@ -146,7 +154,17 @@ const Programs = () => {
           {activeData && (
             <div className={styles.detailsPane} key={detailKey}>
               <div className={styles.detailsHeader}>
-                <div className={styles.detailsIcon}></div>
+                <div className={styles.detailsIcon}>
+                  <Image
+                    src={
+                      programs.find((p) => p.id === activeProgram)?.icon ||
+                      "/computer.png"
+                    }
+                    alt={activeData.name}
+                    width={24}
+                    height={24}
+                  />
+                </div>
                 <h3 className={styles.detailsTitle}>{activeData.name}</h3>
               </div>
               <p className={styles.detailsDesc}>
@@ -164,7 +182,7 @@ const Programs = () => {
                       <span className={styles.bullet}></span>
                       <span className={styles.courseName}>{course}</span>
                     </div>
-                    <span className={styles.arrow}>→</span>
+                    <ArrowRight className={styles.arrow} />
                   </li>
                 ))}
               </ul>

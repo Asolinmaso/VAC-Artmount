@@ -176,29 +176,37 @@ const Hero = () => {
       </div>
 
       <div className={styles.marqueeContainer}>
-        <div className={styles.marqueeTrack}>
-          <span>Industry-Aligned Learning</span>
-          <span>•</span>
-          <span>Practical Skills</span>
-          <span>•</span>
-          <span>Emerging Technologies</span>
-          <span>•</span>
-          <span>Expert Mentorship</span>
-          <span>•</span>
-          <span>Real-World Learning</span>
+<div className={styles.marqueeTrack}>
+  <span>Industry-Aligned Learning</span>
+  <span className={styles.dot}>•</span>
 
-          <span>•</span>
+  <span>Practical Skills</span>
+  <span className={styles.dot}>•</span>
 
-          <span>Industry-Aligned Learning</span>
-          <span>•</span>
-          <span>Practical Skills</span>
-          <span>•</span>
-          <span>Emerging Technologies</span>
-          <span>•</span>
-          <span>Expert Mentorship</span>
-          <span>•</span>
-          <span>Real-World Learning</span>
-        </div>
+  <span>Emerging Technologies</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Expert Mentorship</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Real-World Learning</span>
+
+  <span className={styles.dot}>•</span>
+
+  <span>Industry-Aligned Learning</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Practical Skills</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Emerging Technologies</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Expert Mentorship</span>
+  <span className={styles.dot}>•</span>
+
+  <span>Real-World Learning</span>
+</div>
       </div>
     </section>
   );
