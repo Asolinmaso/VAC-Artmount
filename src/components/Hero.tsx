@@ -1,21 +1,26 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
+import Image from "next/image";
 import styles from './Hero.module.css';
+import CountUp from "react-countup";
+
+
 
 const Hero = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const circleLeftRef = useRef<HTMLDivElement>(null);
   const circleRightRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 20);
+  //   };
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -34,6 +39,8 @@ const Hero = () => {
         }
       });
     };
+
+
 
     const hero = heroRef.current;
     if (hero) {
@@ -56,21 +63,28 @@ const Hero = () => {
       </div>
       <div className={styles.bgStripes}></div>
 
-      <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
+      <header className={styles.header}>
         <div className={styles.logo}>
-          <span className={styles.logoText}><span className={styles.logoA}>a</span>rtmount</span>
-          <span className={styles.logoSubtext}>academy</span>
+          <Image
+            src="/artmount-logo.png"
+            alt="Artmount Academy"
+            width={180}
+            height={60}
+            priority
+          />
         </div>
 
         {/* Desktop nav */}
         <nav className={styles.nav}>
-          <a href="#" className={`${styles.navLink} ${styles.navLinkActive}`}>Home</a>
-          <a href="#" className={styles.navLink}>About</a>
-          <a href="#" className={styles.navLink}>Courses</a>
-          <a href="#" className={styles.navLink}>Benefits</a>
+          <a href="#home" className={styles.navLink}>Home</a>
+          <a href="#about" className={styles.navLink}>About</a>
+          <a href="#courses" className={styles.navLink}>Courses</a>
+          <a href="#benefits" className={styles.navLink}>Benefits</a>
         </nav>
 
-        <button className={styles.contactBtn}>Contact Us</button>
+        <a href="#contact" className={styles.contactBtn}>
+          Contact Us
+        </a>
 
         {/* Hamburger */}
         <button
@@ -87,11 +101,10 @@ const Hero = () => {
 
       {/* Mobile drawer */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
-        <a href="#" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Home</a>
-        <a href="#" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>About</a>
-        <a href="#" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Courses</a>
-        <a href="#" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Benefits</a>
-        <a href="#" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Contact Us</a>
+        <a href="#home" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Home</a>
+        <a href="#about" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>About</a>
+        <a href="#courses" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Courses</a>
+        <a href="#benefits" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>Benefits</a>
       </div>
 
       {/* Backdrop */}
@@ -106,30 +119,85 @@ const Hero = () => {
           Practical learning programs that help students build in-demand skills and prepare for tomorrow's careers.
         </p>
         <div className={styles.actionButtons}>
-          <button className={styles.exploreBtn}>Explore Programs</button>
-          <button className={styles.contactUsBtn}>Contact Us</button>
+          <a href="#courses" className={styles.exploreBtn}>
+            Explore Programs
+          </a>
+
+          <a href="#contact" className={styles.contactUsBtn}>
+            Contact Us
+          </a>
         </div>
       </div>
 
       <div className={styles.statsContainer}>
         <div className={styles.statItem}>
-          <h2 className={styles.statNumber}>30+</h2>
-          <p className={styles.statText}>Industry Programs</p>
+   <h2 className={styles.statNumber}>
+  <CountUp end={30} duration={2} />
+  +
+</h2>
+  <p className={styles.statText}>Industry Programs</p>
         </div>
         <div className={styles.statDivider}></div>
         <div className={styles.statItem}>
-          <h2 className={styles.statNumber}>07+</h2>
+          <h2 className={styles.statNumber}>
+  <CountUp
+    end={7}
+    duration={2}
+    formattingFn={(value) =>
+      value.toString().padStart(2, "0")
+    }
+  />
+  +
+</h2>
           <p className={styles.statText}>Academic Domains</p>
         </div>
         <div className={styles.statDivider}></div>
         <div className={styles.statItem}>
-          <h2 className={styles.statNumber}>1,00,000+</h2>
+<h2 className={styles.statNumber}>
+  <CountUp
+    end={100000}
+    duration={3}
+    formattingFn={(value) =>
+      Math.floor(value).toLocaleString("en-IN")
+    }
+  />
+  +
+</h2>
           <p className={styles.statText}>Students Empowered</p>
         </div>
         <div className={styles.statDivider}></div>
         <div className={styles.statItem}>
-          <h2 className={styles.statNumber}>100+</h2>
+<h2 className={styles.statNumber}>
+  <CountUp end={100} duration={2.5} />
+  +
+</h2>
           <p className={styles.statText}>Expert Mentors</p>
+        </div>
+      </div>
+
+      <div className={styles.marqueeContainer}>
+        <div className={styles.marqueeTrack}>
+          <span>Industry-Aligned Learning</span>
+          <span>•</span>
+          <span>Practical Skills</span>
+          <span>•</span>
+          <span>Emerging Technologies</span>
+          <span>•</span>
+          <span>Expert Mentorship</span>
+          <span>•</span>
+          <span>Real-World Learning</span>
+
+          <span>•</span>
+
+          <span>Industry-Aligned Learning</span>
+          <span>•</span>
+          <span>Practical Skills</span>
+          <span>•</span>
+          <span>Emerging Technologies</span>
+          <span>•</span>
+          <span>Expert Mentorship</span>
+          <span>•</span>
+          <span>Real-World Learning</span>
         </div>
       </div>
     </section>

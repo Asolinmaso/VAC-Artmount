@@ -1,46 +1,101 @@
 "use client";
-import React, { useState } from 'react';
-import styles from './AboutUs.module.css';
+
+import React, { useState } from "react";
+import styles from "./AboutUs.module.css";
+
+type TabType = "Vision" | "Mission" | "Goals";
 
 const AboutUs = () => {
-  const [activeTab, setActiveTab] = useState('Mission');
-  const [contentKey, setContentKey] = useState(0);
+  const [activeTab, setActiveTab] = useState<TabType>("Mission");
 
-  const tabs = ['Vision', 'Mission', 'Goals'];
+  const tabContent: Record<
+    TabType,
+    {
+      image: string;
+      text: string;
+    }
+  > = {
+    Vision: {
+      image: "/vision.png",
+      text: "Empowering students with future-ready skills and bridging the gap between academic learning and industry expectations.",
+    },
 
-  const tabContent = {
-    Vision: "To be the leading platform empowering institutions with industry-aligned programs that help students develop practical skills and prepare for tomorrow's careers.",
-    Mission: "Delivering industry-aligned learning experiences that equip students with practical skills and future-ready capabilities.",
-    Goals: "To bridge the gap between academia and industry by continuously evolving our curriculum and providing hands-on practical learning."
-  };
+    Mission: {
+      image: "/vision.png",
+      text: "Delivering industry-aligned learning experiences that equip students with practical skills and future-ready capabilities.",
+    },
 
-  const handleTabChange = (tab: string) => {
-    if (tab === activeTab) return;
-    setActiveTab(tab);
-    setContentKey((k) => k + 1); // re-trigger animation
+    Goals: {
+      image: "/vision.png",
+      text: "Enhance employability, foster innovation, and prepare students for success in a rapidly evolving world.",
+    },
   };
 
   return (
-    <section className={styles.aboutSection}>
-      <div className={styles.tabsContainer}>
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            className={`${styles.tab} ${activeTab === tab ? styles.activeTab : styles.inactiveTab}`}
-            onClick={() => handleTabChange(tab)}
-          >
-            {tab}
-            {activeTab === tab && <div className={styles.tabIndicator}></div>}
-          </button>
-        ))}
-      </div>
-
-      <div className={styles.contentContainer}>
-        <div className={styles.imageWrapper}>
-          <div className={styles.placeholderImage}></div>
+    <section className={styles.aboutWrapper}>
+      <div className={styles.topSection}>
+        <div className={styles.leftImage}>
+          <img
+            src="/about-building.png"
+            alt="About Artmount Academy"
+          />
         </div>
-        <div className={styles.textContent} key={contentKey}>
-          <p>{tabContent[activeTab as keyof typeof tabContent]}</p>
+
+        <div className={styles.rightContent}>
+          <span className={styles.aboutLabel}>About Us</span>
+
+          <h2 className={styles.heading}>
+            Bridging Academia with
+            <br />
+            <span>Industry</span>
+          </h2>
+
+          <p className={styles.description}>
+            Artmont Academy empowers institutions with industry-aligned
+            learning programs that help students develop practical skills,
+            explore emerging technologies, and prepare for evolving career
+            opportunities across diverse disciplines.
+          </p>
+
+          <div className={styles.tabsContainer}>
+            {(["Vision", "Mission", "Goals"] as TabType[]).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`${styles.tab}
+                  ${tab === "Vision" ? styles.visionTab : ""}
+                  ${tab === "Mission" ? styles.missionTab : ""}
+                  ${tab === "Goals" ? styles.goalsTab : ""}
+                `}
+              >
+                {tab}
+
+                {activeTab === tab && (
+                  <div
+                    className={styles.tabIndicator}
+                    style={{
+                      borderTop:
+                        tab === "Mission"
+                          ? "14px solid #8C2A92"
+                          : "14px solid #36A8DF",
+                    }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.contentContainer}>
+            <img
+              src={tabContent[activeTab].image}
+              alt={activeTab}
+              className={styles.tabImage}
+            />
+
+            <div className={styles.textContent}>
+              <p>{tabContent[activeTab].text}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
