@@ -7,22 +7,22 @@ const features = [
   {
     title: 'Industry Programs',
     desc: 'Aligning academics with industry and career needs.',
-    icon: '🎯',
+    
   },
   {
     title: 'Expert Training',
     desc: 'Delivered by experts with practical experience.',
-    icon: '🏆',
+    
   },
   {
     title: 'Flexible Delivery',
     desc: 'Supporting online, offline, and hybrid learning.',
-    icon: '🔄',
+    
   },
   {
     title: 'Complete Support',
     desc: 'From planning to seamless program execution.',
-    icon: '🤝',
+   
   },
 ];
 
@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
   return (
     <section className={styles.whySection}>
       <span className={`${styles.label} reveal`}>Why Institutions Choose Us</span>
-      <h2 className={`${styles.title} reveal`}>A Trusted Partner for Student Success</h2>
+      <h2 className={`${styles.title} reveal`}>A Trusted Partner for <span>Student Success</span></h2>
       <p className={`${styles.description} reveal`}>
         We work closely with institutions to deliver industry-aligned learning experiences that empower students with practical skills and future-ready capabilities.
       </p>
@@ -44,9 +44,7 @@ const WhyChooseUs = () => {
               className={`${styles.featureItem} reveal`}
               style={{ transitionDelay: `${0.1 * index}s` }}
             >
-              <div className={styles.featureIconWrapper}>
-                <span className={styles.featureIcon}>{feature.icon}</span>
-              </div>
+            
               <h3 className={styles.featureTitle}>{feature.title}</h3>
               <p className={styles.featureDesc}>{feature.desc}</p>
             </div>

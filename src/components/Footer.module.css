@@ -4,7 +4,7 @@
   width: 100%;
   background: linear-gradient(160deg, #6B156E 0%, #2E052F 100%);
   color: var(--bg-white);
-  padding: 80px 100px 60px;
+  padding: 80px 120px 60px;
   overflow: hidden;
 }
 
@@ -15,7 +15,8 @@
   display: flex;
   justify-content: space-between;
   gap: 60px;
-  max-width: 1440px;
+  align-items: flex-start;
+  max-width: 1360px;
   margin: 0 auto;
 }
 
@@ -93,7 +94,7 @@
 
 /* ─── Links Column ───────────────────────────────────────────── */
 .columnLinks {
-  flex: 0 0 180px;
+  flex: 0 0 220px;
   display: flex;
   flex-direction: column;
 }
@@ -156,7 +157,7 @@
 
 /* ─── Address Column ─────────────────────────────────────────── */
 .columnAddress {
-  flex: 0 0 340px;
+  flex: 0 0 300px;
   display: flex;
   flex-direction: column;
 }
@@ -223,7 +224,7 @@
 
   .footerContent {
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     align-items: flex-start;
   }
 

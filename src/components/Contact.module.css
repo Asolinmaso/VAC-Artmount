@@ -1,8 +1,8 @@
 /* ─── Contact Section ────────────────────────────────────────── */
 .contactSection {
-  max-width: 1440px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 100px;
+  padding: 80px 40px;
   display: flex;
   gap: 80px;
   align-items: flex-start;
@@ -13,6 +13,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 650px;
 }
 
 .title {
@@ -27,7 +28,7 @@
   font-size: 18px;
   color: #555;
   line-height: 1.65;
-  margin: 0 0 48px;
+  margin: 0 0 ;
 }
 
 .subTitle {
@@ -50,21 +51,19 @@
   gap: 16px;
 }
 
+.contactIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
 .iconBox {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--duration-fast) var(--ease-out-back),
-              box-shadow var(--duration-fast) ease;
 }
-
-.iconEmail  { background: linear-gradient(135deg, #6B156E, #9B20A0); }
-.iconPhone  { background: linear-gradient(135deg, #2FA7DF, #1886BF); }
-.iconLocation { background: linear-gradient(135deg, #6B156E, #2FA7DF); }
 
 .infoItem:hover .iconBox {
   transform: scale(1.12) rotate(-4deg);
@@ -93,7 +92,7 @@
   box-shadow: 0 8px 40px rgba(123, 0, 224, 0.12),
               0 2px 8px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
-  padding: 40px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,8 +141,8 @@
 .input {
   width: 100%;
   height: 52px;
-  border: 1.5px solid var(--border-color);
-  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
   padding: 0 16px;
   font-size: 16px;
   font-family: inherit;
@@ -169,8 +168,8 @@
 .inputGroupPhone {
   width: 100%;
   height: 52px;
-  border: 1.5px solid var(--border-color);
-  border-radius: 10px;
+  border: 1px solid #D9D9D9;;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -188,14 +187,30 @@
   align-items: center;
   gap: 6px;
   padding: 0 14px;
-  border-right: 1.5px solid var(--border-color);
+  border: 1px solid #D9D9D9;
   color: var(--text-gray);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   height: 100%;
   flex-shrink: 0;
   background: var(--bg-light);
   user-select: none;
+}
+
+.countrySelect {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-gray);
+  cursor: pointer;
+
+  appearance: auto;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
 }
 
 .arrowDown {
@@ -222,9 +237,9 @@
 /* ─── Textarea ───────────────────────────────────────────────── */
 .textarea {
   width: 100%;
-  height: 120px;
-  border: 1.5px solid var(--border-color);
-  border-radius: 10px;
+  height: 90px;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
   padding: 14px 16px;
   font-size: 16px;
   font-family: inherit;
@@ -289,7 +304,7 @@
   }
 
   .contactFormWrapper {
-    flex: 0 0 480px;
+    flex: 0 0 420px;
   }
 }
 
@@ -339,8 +354,8 @@
   }
 
   .formTitle {
-    font-size: 26px;
-    margin-bottom: 24px;
+    font-size: 22px;
+    margin-bottom: 16px;
   }
 
   .input,
@@ -368,4 +383,15 @@
   .formCard {
     padding: 24px 16px;
   }
+}
+
+.contactBottom {
+  margin-top: auto;
+  padding-bottom: 0;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
